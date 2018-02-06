@@ -15,8 +15,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Set Static Path (for static resources. i.e css)
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function(req, res) {    
-    res.render('index');
+app.get('/', function(req, res) {
+    
+    res.render('index', { title: 'Sample Title' });
 });
 
 const port = 3000;
