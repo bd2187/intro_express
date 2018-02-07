@@ -15,9 +15,32 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Set Static Path (for static resources. i.e css)
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function(req, res) {
-    
-    res.render('index', { title: 'Sample Title' });
+var users = [
+    {
+        first_name: 'john',
+        last_name: 'doe',
+        email: 'johndoe@gmail.com',
+        id: 1
+    },
+    {
+        first_name: 'jane',
+        last_name: 'doe',
+        email: 'janedoe@gmail.com',
+        id: 2
+    },
+    {
+        first_name: 'bill',
+        last_name: 'doe',
+        email: 'billdoe@gmail.com',
+        id: 3
+    },
+];
+
+app.get('/', function(req, res) {    
+    res.render('index', {
+        title: 'Sample Title',
+        users
+    });
 });
 
 const port = 3000;
