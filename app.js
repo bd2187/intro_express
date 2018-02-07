@@ -36,10 +36,17 @@ var users = [
     },
 ];
 
-app.get('/', function(req, res) {    
+app.get('/', function(req, res) {
+
+    var foo = users.map(function(obj) {
+        obj.first_name = obj.first_name[0].toUpperCase() + obj.first_name.slice(1).toLowerCase();
+        obj.last_name = obj.last_name[0].toUpperCase() + obj.last_name.slice(1).toLowerCase();
+        return obj;
+    });
+
     res.render('index', {
-        title: 'Sample Title',
-        users
+        title: 'Users',
+        users: foo
     });
 });
 

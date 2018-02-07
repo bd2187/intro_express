@@ -2,6 +2,23 @@
     <h2>
         <%= title %>
     </h2>
+
+    <form method="POST" action="/users/add">
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" id="first_name">
+        <br>
+        <br>
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name" id="last_name">
+        <br>
+        <br>
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="user_emai">
+        <br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
     <ul>
 
         <% users.forEach(function(user) { %>
