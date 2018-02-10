@@ -1,7 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+const db = require('mongojs');
+
 const path = require('path');
-var expressValidator = require('express-validator');
+
 
 var app = express();
 
@@ -15,6 +18,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Set Static Path (for static resources. i.e css)
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Global Variables
+app.use(function(req, res, next) {
+    res.locals.errors = null;
+    next();
+});
 
 // Express Validator middleware
 app.use(expressValidator());
@@ -63,7 +72,7 @@ app.post('/users/add', function(req, res) {
     var errors = req.validationErrors();
 
     if (errors) {
-
+        console.log(errors);
         res.render('index', {
             title: 'Users',
             users: foo,

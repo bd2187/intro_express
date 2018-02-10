@@ -3,6 +3,16 @@
         <%= title %>
     </h2>
 
+    <% if (errors) { %>
+        <ul>
+        <% errors.forEach(function(error) { %>            
+            <li>
+                <%= error.msg %>
+            </li>
+        <% }) %>
+        </ul>
+    <% } %>
+
     <form method="POST" action="/users/add">
         <label for="first_name">First Name:</label>
         <input type="text" name="first_name" id="first_name">
