@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
-const db = require('mongojs');
+
+const mongojs = require('mongojs');
+const DATABASE = require('./constants').DATABASE;
+const db = mongojs(DATABASE, ['users']);
 
 const path = require('path');
-
 
 var app = express();
 
@@ -56,6 +58,11 @@ var foo = users.map(function(obj) {
 });
 
 app.get('/', function(req, res) {
+
+    db.users.find(function (err, docs) {
+        console.log(docs);
+    });
+
 
     res.render('index', {
         title: 'Users',
