@@ -29,17 +29,20 @@
         <input type="submit" value="Submit">
     </form>
 
-    <ul>
+    <% if (users) { %>
+        <ul>
 
-        <% users.forEach(function(user) { %>
-
-            <li>
-                <%= user.first_name + ' ' + user.last_name %>
-            </li>
-
-        <% }) %>
-    </ul>
+            <% users.forEach(function(user) { %>
     
+                <li>
+                    <%= user.first_name + ' ' + user.last_name %>
+                </li>
+    
+            <% }) %>
+        </ul>
+        
+    <% } %>
+
 <% include partials/footer %>
 
 
