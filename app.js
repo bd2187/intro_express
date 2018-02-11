@@ -50,7 +50,7 @@ app.post('/users/add', function(req, res) {
 
     if (errors) {
 
-        res.end('error')
+        res.end('error');
         // res.render('index', {
         //     title: 'Users',
         //     users: users,
@@ -74,6 +74,10 @@ app.post('/users/add', function(req, res) {
     }
 
     res.end();
+});
+
+app.delete('/users/delete/:id', function(req, res) {
+    console.log(req.params.id);
 });
 
 const port = 3000;
