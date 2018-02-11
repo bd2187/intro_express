@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 
 const mongojs = require('mongojs');
+const ObjectId = mongojs.ObjectId;
 const DATABASE = require('./constants').DATABASE;
 const db = mongojs(DATABASE, ['users']);
 
@@ -77,7 +78,14 @@ app.post('/users/add', function(req, res) {
 });
 
 app.delete('/users/delete/:id', function(req, res) {
-    console.log(req.params.id);
+    
+    db.users.remove({_id: ObjectId(req.params.id)}, function(err, result) {
+        if (err) {
+            console.log(err);
+        }        
+    });
+
+    res.redirect('/');
 });
 
 const port = 3000;

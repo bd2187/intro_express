@@ -11,9 +11,10 @@ $(document).ready(function() {
             $.ajax({
                 type: 'DELETE',
                 url: '/users/delete/' + userId
-            }).done(function(response) {
+            }).always(function(response) {
                 window.location.replace('/');
-            })
+            });
+            
         } else {
             return false;
         }       
